@@ -25,5 +25,10 @@ Route::get('voir_list_eleve',[EleveController::class,'Voir_List']);
 Route::get('ajout_note',[NoteController::class,'AjoutNote']);
 Route::get('voir_note',[NoteController::class,'VoirNote']);
 Route::post('ajout_eleve',[EleveController::class,'AjouterEleve']);
-Route::get('modifier',[EleveController::class,'Modifier']);
 Route::post('ajout_note',[NoteController::class,'AjouterNote']);
+// web.php
+Route::get('modifier_eleve/{id}', [EleveController::class, 'ModifierEleve']);
+Route::post('modifier/{id}', [EleveController::class, 'EnregistrerModificationEleve']);
+
+Route::get('modifier_note/{id}', [NoteController::class,'ModifierNote']);
+Route::post('modifier/{id}', [NoteController::class,'EnregistrerMofifNote']);

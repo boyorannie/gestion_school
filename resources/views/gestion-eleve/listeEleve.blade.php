@@ -218,18 +218,21 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>2018-09-29 05:57</td>
-                                                <td>Mobile</td>
-                                                <td>iPhone X 64Gb Grey</td>
-                                                <td class="process">Processed</td>
-                                                <td>$999.00</td>
-                                                <td>
-                                                    <a href="{{url('modifier')}}" class="btn btn-primary">Modifier</a>
-                                                    <a href="" class="btn btn-danger">Supprimer</a>
-                                                </td>
-                                               
-                                            </tr>
+                                        @foreach($eleves as $eleve)
+    <tr>
+    <td>{{$eleve->id}}</td>
+    <td>{{$eleve->nom}}</td>
+    <td>{{$eleve->prenom}}</td>
+    <td>{{$eleve->date_naissance}}</td>
+    <td>{{$eleve->Classe}}</td>
+    <td>{{$eleve->sexe}}</td>
+        <td>
+            <a href="{{ url('modifier_eleve/'.$eleve->id) }}" class="btn btn-primary">Modifier</a>
+            <a href="" class="btn btn-danger">Supprimer</a>
+        </td>
+    </tr>
+@endforeach
+
                                        
                                 
                                         </tbody>

@@ -14,11 +14,11 @@ class EleveController extends Controller
     public function AjouterEleve(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nom' => 'Obligatoire',
-            'prenom' => 'Obligatoire',
-            'date' => 'Obligatoire|date',
-            'classe' => 'Obligatoire',
-            'sexe' => 'Obligatoire',
+            'nom' => 'required',
+            'prenom' => 'required',
+            'date' => 'required',
+            'classe' => 'required',
+            'sexe' => 'required',
         ]);
     
         if ($validator->fails()) {
@@ -40,12 +40,42 @@ class EleveController extends Controller
     
     public function Voir_List()
     {
-        return view('gestion-eleve.listeEleve');
+        // Récupérer tous les élèves depuis la base de données
+        $eleves = Eleve::all();
+    
+        // Passer les élèves à la vue
+        return view('gestion-eleve.listeEleve', compact('eleves'));
     }
-    public function Modifier()
-    {
-        return view('gestion-eleve.modifier');
-    }
+   // EleveController.php
+public function ModifierEleve($id)
+{
+    // Récupère l'élève à modifier depuis la base de données en utilisant $id
+    $eleve = Eleve::find($id);
+
+    // Passe l'élève à la vue
+    return view('gestion-eleve.modifier', compact('eleve'));
+}
+
+public function EnregistrerModificationEleve(Request $request, $id)
+{
+    // Récupérer l'élève existant depuis la base de données
+    $eleve = Eleve::find($id);
+
+    // Mettre à jour les attributs de l'élève
+    $eleve->nom = $request->nom;
+    $eleve->prenom = $request->prenom;
+    $eleve->date_naissance = $request->date;
+    $eleve->classe = $request->classe;
+    $eleve->sexe = $request->sexe;
+
+    // Enregistrer les modifications
+    $eleve->save();
+
+    // Redirige vers la liste des élèves après la modification
+    return redirect()->back()->with('success', 'Élève modifié avec succès.');
+}
+
+
     /**
      * Show the form for creating a new resource.
      */

@@ -22,21 +22,27 @@ class NoteController extends Controller
 
     public function VoirNote()
     {
-        return view('gestion-note.voirNote');
+        $note = Note::all();    
+        return view('gestion-note.voirNote',compact('note'));
     }
 
-    public function AjouterNote()
+    public function ModifierNote($id)
     {
-        
+        $note = Note::find($id);
+        return view('gestion-note.modifierNote',compact('note'));
     }
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    public function EnregistrerMofifNote(Request $request, $id)
 
+    {
+        $note = Note::find($id);    
+        $note->matiere = $request->matiere;
+        $note->note_obtenu = $request->note_obtenu;
+        $note->save();
+        return redirect()->back()->with('success', 'Note modifié avec succès.');
+    }
     /**
      * Store a newly created resource in storage.
      */

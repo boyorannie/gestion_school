@@ -13,25 +13,25 @@
     <title>Forms</title>
 
     <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="{{asset('css/font-face.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('vendor/font-awesome-5/css/fontawesome-all.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
-    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="{{asset('vendor/bootstrap-4.1/bootstrap.min.css')}}" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
-    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="{{asset('vendor/animsition/animsition.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('vendor/wow/animate.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('vendor/slick/slick.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/theme.css" rel="stylesheet" media="all">
+    <link href="{{asset('css/theme.css')}}" rel="stylesheet" media="all">
 
 </head>
 
@@ -94,7 +94,7 @@
                                     <div class="card-header">POLARIS</div>
                                     <div class="card-body">
                                         <div class="card-title">
-                                            <h3 class="text-center title-2">Ajouter Eleve</h3>
+                                            <h3 class="text-center title-2">Modifier Eleve</h3>
                                             @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -114,11 +114,12 @@
 
                                         </div>
                                         <hr>
-                                        <form action="{{url('ajout_eleve')}}" method="post" novalidate="novalidate">
+                                        <form action="{{ url('modifier/'.$eleve->id) }}" method="post" novalidate="novalidate">
                                             @csrf
+                                            @method('post')
                                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Nom</label>
-                                                <input id="cc-pament" name="nom" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
+                                                <input id="cc-pament" name="nom" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{{ $eleve->nom }}">
                                             </div>
                                             <div class="form-group has-success">
                                                 <label for="cc-name" class="control-label mb-1">Prenom</label>
@@ -128,7 +129,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="cc-number" class="control-label mb-1">Date de naissance</label>
-                                                <input id="cc-number" name="date" type="date" class="form-control cc-number identified visa" value="" data-val="true"
+                                                <input id="cc-number" name="date" type="date" class="form-control cc-number identified visa" value="{{ $eleve->date_naissance }}" data-val="true"
                                                     data-val-required="Please enter the card number" data-val-cc-number="Please enter a valid card number"
                                                     autocomplete="cc-number">
                                                 <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
@@ -180,28 +181,28 @@
     </div>
 
     <!-- Jquery JS-->
-    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <script src="{{asset('vendor/jquery-3.2.1.min.js')}}"></script>
     <!-- Bootstrap JS-->
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <script src="{{asset('vendor/bootstrap-4.1/popper.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap-4.1/bootstrap.min.js')}}"></script>
     <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
+    <script src="{{asset('vendor/slick/slick.min.js')}}">
     </script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    <script src="{{asset('vendor/wow/wow.min.js')}}"></script>
+    <script src="{{asset('vendor/animsition/animsition.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap-progressbar/bootstrap-progressbar.min.js')}}">
     </script>
-    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
+    <script src="{{asset('vendor/counter-up/jquery.waypoints.min.js')}}"></script>
+    <script src="{{asset('vendor/counter-up/jquery.counterup.min.js')}}">
     </script>
-    <script src="vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js">
+    <script src="{{asset('vendor/circle-progress/circle-progress.min.js')}}"></script>
+    <script src="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
+    <script src="{{asset('vendor/chartjs/Chart.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/select2/select2.min.js')}}">
     </script>
 
     <!-- Main JS-->
-    <script src="js/main.js"></script>
+    <script src="{{asset('js/main.js')}}"></script>
 
 </body>
 

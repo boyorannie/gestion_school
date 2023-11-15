@@ -106,6 +106,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($note as $notes)
                                             <tr>
                                                 <td>2018-09-29 05:57</td>
                                                 <td>Mobile</td>
@@ -113,11 +114,12 @@
                                                 <td class="process">Processed</td>
                                                
                                                 <td>
-                                                    <a href="" class="btn btn-primary">Modifier</a>
+                                                    <a href="{{url('modifier_note/'.$notes->id)}}" class="btn btn-primary">Modifier</a>
                                                     <a href="" class="btn btn-danger">Supprimer</a>
                                                 </td>
                                                
                                             </tr>
+                                            @endforeach
                                        
                                 
                                         </tbody>
