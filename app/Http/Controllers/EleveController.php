@@ -14,11 +14,11 @@ class EleveController extends Controller
     public function AjouterEleve(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nom' => 'Obligatoire',
-            'prenom' => 'Obligatoire',
-            'date' => 'Obligatoire|date',
-            'classe' => 'Obligatoire',
-            'sexe' => 'Obligatoire',
+            'nom' => 'required',
+            'prenom' => 'required',
+            'date' => 'required',
+            'classe' => 'required',
+            'sexe' => 'required',
         ]);
     
         if ($validator->fails()) {

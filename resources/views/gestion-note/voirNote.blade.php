@@ -38,7 +38,7 @@
 <body class="animsition">
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
-     
+
         <!-- END HEADER MOBILE-->
 
         <!-- MENU SIDEBAR-->
@@ -54,7 +54,7 @@
                         <li class="has-sub">
                             <a class="js-arrow" href="{{url('/')}}">
                                 <i class="fas fa-tachometer-alt"></i>Tableau de bord</a>
-                            
+
                         </li>
                         <li>
                             <a href="{{url('/')}}">
@@ -66,8 +66,8 @@
                         </li>
 
 
-                            </ul>
-                        </li>
+                    </ul>
+                    </li>
                     </ul>
                 </nav>
             </div>
@@ -77,7 +77,7 @@
         <!-- PAGE CONTAINER-->
         <div class="page-container">
             <!-- HEADER DESKTOP-->
-          
+
             <!-- END HEADER DESKTOP-->
 
             <!-- MAIN CONTENT-->
@@ -85,58 +85,62 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
 
-                                <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">La Liste des Notes</h3>
-                                <a href="{{url('ajout_note')}}" class="btn btn-primary">Ajouter Note</a>
-                            </div>
+                        <!-- DATA TABLE -->
+                        <h3 class="title-5 m-b-35">La Liste des Notes</h3>
+                        <a href="{{url('ajout_note')}}" class="btn btn-primary">Ajouter Note</a>
+                    </div>
+                </div>
+                <div class="row m-t-30">
+                    <div class="col-md-12">
+                        <!-- DATA TABLE-->
+                        <div class="table-responsive m-b-40">
+                            <table class="table table-borderless table-data3">
+                                <thead>
+                                    <tr>
+                                        <th>Nom Eleve</th>
+                                        <th>Classe</th>
+                                        <th>Matiere</th>
+                                        <th>Note</th>
+
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach( $eleves as $eleve)
+                                    @foreach( $notes as $note)
+                                    <tr>
+                                        <td>{{$eleve->nom}}</td>
+                                        <td>{{$eleve->classe}}</td>
+                                        <td>{{$note->matiere}}</td>
+                                        <td>{{$note->note_obtenu}}</td>
+
+                                        <td>
+                                            <a href="" class="btn btn-primary">Modifier</a>
+                                            <a href="" class="btn btn-danger">Supprimer</a>
+                                        </td>
+
+                                    </tr>
+                                    @endforeach
+                                    @endforeach
+
+
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="row m-t-30">
-                            <div class="col-md-12">
-                                <!-- DATA TABLE-->
-                                <div class="table-responsive m-b-40">
-                                    <table class="table table-borderless table-data3">
-                                        <thead>
-                                            <tr>
-                                                <th>Nom Eleve</th>
-                                                <th>Classe</th>
-                                                <th>Matiere</th>
-                                                <th>Note</th>
-                                     
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>2018-09-29 05:57</td>
-                                                <td>Mobile</td>
-                                                <td>iPhone X 64Gb Grey</td>
-                                                <td class="process">Processed</td>
-                                               
-                                                <td>
-                                                    <a href="" class="btn btn-primary">Modifier</a>
-                                                    <a href="" class="btn btn-danger">Supprimer</a>
-                                                </td>
-                                               
-                                            </tr>
-                                       
-                                
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- END DATA TABLE-->
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                                </div>
-                            </div>
+                        <!-- END DATA TABLE-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
 
     </div>
 

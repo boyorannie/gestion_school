@@ -38,7 +38,7 @@
 <body class="animsition">
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
-       
+
         <!-- END HEADER MOBILE-->
 
         <!-- MENU SIDEBAR-->
@@ -54,7 +54,7 @@
                         <li class="has-sub">
                             <a class="js-arrow" href="{{url('/')}}">
                                 <i class="fas fa-tachometer-alt"></i>Tableau de bord</a>
-                            
+
                         </li>
                         <li>
                             <a href="{{url('voir_list_eleve')}}">
@@ -70,8 +70,8 @@
                         </li>
 
 
-                            </ul>
-                        </li>
+                    </ul>
+                    </li>
                     </ul>
                 </nav>
             </div>
@@ -81,75 +81,83 @@
         <!-- PAGE CONTAINER-->
         <div class="page-container">
             <!-- HEADER DESKTOP-->
-            
+
 
             <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
-                           
+
                             <div class="col-lg-6">
                                 <div class="card">
                                     <div class="card-header">
                                         <strong>Ajouter une </strong> Note
                                     </div>
                                     <div class="card-body card-block">
-                                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                            
+                                        <form action="{{url('ajout_note')}}" method="POST"  >
+                                        @csrf
+
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
                                                     <label for="text-input" class=" form-control-label">Matiere</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="text" id="text-input" name="matiere" placeholder="Entrer la matiere de leleve" class="form-control">
-                                                
+
                                                 </div>
                                             </div>
-                                           
+
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
                                                     <label for="password-input" class=" form-control-label">Note</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="number" id="note" name="note" placeholder="note pour leleve" class="form-control">
-                                                   
+
                                                 </div>
                                             </div>
-                                           
-                                            
+
+
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
                                                     <label for="select" class=" form-control-label">Select</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
+
                                                     <select name="eleve" id="select" class="form-control">
-                                                        <option value="0">Choisir L'eleve</option>
-                                                        <option value="1">Option #1</option>
-                                                        <option value="2">Option #2</option>
-                                                        <option value="3">Option #3</option>
+                                                        @foreach($eleves as $eleve)
+                                                        <option value="{{ $eleve->eleve }}">{{ $eleve->nom }} {{ $eleve->prenom }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <select name="classe" id="select" class="form-control">
+                                                        @foreach($eleves as $eleve)
+                                                        <option value="{{ $eleve->eleve }}">{{ $eleve->classe}}</option>
+                                                        @endforeach
+                                                    </select>
+
                                                     </select>
                                                 </div>
                                             </div>
-                                           
+
                                             <div class="card-footer">
-                                                <button type="submit" class="btn btn-primary btn-sm">
+                                                <button type="submit"  class="btn btn-primary btn-sm">
                                                     <i class="fa fa-dot-circle-o"></i> Ajouter note
                                                 </button>
-                                                
+
                                             </div>
-                    
+
                                         </form>
                                     </div>
-                                   
+
                                 </div>
-                                
+
                             </div>
-                           
-                            
-                           
-                           
-                          
+
+
+
+
+
                         </div>
                         <div class="row">
                             <div class="col-md-12">

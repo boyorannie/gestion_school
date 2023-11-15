@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('matiere');
             $table->string('note_obtenu');
-            $table->unsignedBigInteger('eleve_id');
+            $table->unsignedBigInteger('eleve_id')->nullable();
             $table->foreign('eleve_id')->references('id')->on('eleves')->onDelete('cascade');
             $table->timestamps();
         });
